@@ -171,7 +171,6 @@ Ok, so I know that some of you may have a macOS machine nearby and some may not 
       - You do not need to use SMCSuperIO/LightSensor/BatteryManager
       - No need for an ethernet kext (as you guessed it, because you don have one, USB ethernet adapters have their own OEM drivers or may work OOB)
       - You need VoodooPS2 (acidanthera) driver found [here](http://kexts.goldfish64.com/) (source code [here](https://github.com/acidanthera/VoodooPS2)), in case it didn't work for you, you can use Rehabman's releases (same repository). This driver will enable your PS/2 keyboard (yes the keyboard is PS/2) to be used by macOS.
-      - 
     - SSDTs:
       - Take from this guide these files:
         - SSDT-PLUG
