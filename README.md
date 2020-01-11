@@ -309,6 +309,11 @@ After installing macOS, getting OpenCore to boot, it's time to get the rest of i
 
 You should be all done for now. All of these patches will be in `oc-additions.plist`. You will have to merge them in your config.plist that you made earlier with the OpenCore guide.
 
+#### Audio and DP output
+
+You'll find 2 entries to merge into your config.plist in the `oc-additions.plist\DeviceProperties\Add`.
+You can know more about the data [here (WhateverGreen FAQ.IntelHD)](https://github.com/acidanthera/WhateverGreen/blob/master/Manual/FAQ.IntelHD.en.md) and [here (AppleALC Wiki)](https://github.com/acidanthera/AppleALC/wiki/Installation-and-usage).
+
 ---
 
 ## Issues and small fixes and whatever I can't put in a category lol
