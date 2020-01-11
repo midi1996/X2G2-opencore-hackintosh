@@ -98,6 +98,16 @@ Thankfully with OpenCore a lot of things got smoothed out and works just as you 
 - Pen Pressure input, only works on 10.11 (you will have to do more work to get this running on 10.11, not covered here)
 - *to be filled when I remember something*
 
+### Things I'm trying to fix atm and need help with
+
+- [ ] Thunderbolt 3
+- [ ] Better power management in idle -- the whole CPU package idles at 1.7W which is a lot
+- [ ] Pen Pressure sensitivity (I'm no coder, so I'm not really sure)
+- [ ] Gyro/Accel and fix macOS black screen when manually rotating the screen (no idea why this happens)
+- [ ] Fix light sensors
+- [ ] Fix the SDCard Reader
+- [ ] ~~Fix various issues that may or may not happen~~
+
 ---
 
 ## Installing macOS
