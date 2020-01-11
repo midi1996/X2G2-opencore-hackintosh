@@ -94,7 +94,7 @@ Thankfully with OpenCore a lot of things got smoothed out and works just as you 
   - I dont use iTunes/TV+
   - Netflix on Safari may not work (didn't test)
     - Works on Chrome/Firefox just fine
-- <to be filled when I remember something>
+- *to be filled when I remember something*
 
 ---
 
