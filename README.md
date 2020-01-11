@@ -23,7 +23,7 @@ THIS GUIDE IS PROVIDED TO YOU FOR EDUCATIONAL PURPOSES AND THIS I AND ANYONE MEN
   - From experience a SATA SSD would be cheaper, and even macOS wont cry about it, but I got this for a good price so I'm not really complaining ¯\\_(ツ)\_/¯
   - Had a 256GB SATA M.2 Sandisk drive.
 - Wifi Card: **was** Intel Wireless Dual Band 8365 (for vPro), replaced with **DW1560**.
-  - ⚠️ The Slot is an A slot, WILL NOT handle E keyed cards unless you dremel it, get the proper card
+  - ⚠️ The Slot is an A slot, WILL NOT handle E keyed cards unless you Dremel it, get the proper card
   - ⚠️ DW1820A is problematic on this machine (still investigating it)
 - LGE Display IPS 2736x1824 3:2 @60Hz
 - Touch Panel: WCOM483E I2C Wacom Touch&Pen AES
