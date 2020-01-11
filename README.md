@@ -14,7 +14,7 @@ THIS GUIDE IS PROVIDED TO YOU FOR EDUCATIONAL PURPOSES AND THIS I AND ANYONE MEN
 
 ## My Hardware
 
-- Model: HP Elite X2 1012 Ge
+- Model: HP Elite X2 1012 G2
 - CPU: Intel Core i5 7300U 2.7GHz Dual Core - Four Threads CPU (vPro)
 - GPU: Intel HD620
 - 8GB LPDDR3 RAM (soldered)
