@@ -56,6 +56,7 @@ Thankfully with OpenCore a lot of things got smoothed out and works just as you 
   - Speakers
 - Touch
   - As a giant trackpad
+  - Pen input (no pressure support)
 - Keyboard cover USB trackpad (yes it's USB)
 - Keyboard hotkeys
   - Note that you may want to do a fresh Windows re-install to get the brightness keys working on both OSes, HP's keyboard software breaks it.
@@ -94,6 +95,7 @@ Thankfully with OpenCore a lot of things got smoothed out and works just as you 
   - I dont use iTunes/TV+
   - Netflix on Safari may not work (didn't test)
     - Works on Chrome/Firefox just fine
+- Pen Pressure input, only works on 10.11 (you will have to do more work to get this running on 10.11, not covered here)
 - *to be filled when I remember something*
 
 ---
