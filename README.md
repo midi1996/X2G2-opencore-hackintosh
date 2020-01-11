@@ -253,6 +253,8 @@ Ok, so I know that some of you may have a macOS machine nearby and some may not 
          - I have yet to get this kind of issue
          - OpenCore's NVRAM clearing will reset the EFI boot entries to the defaults, rerun the above after an NVRAM clearing
 
+---
+
 ### Fixing macOS and friends
 
 After installing macOS, getting OpenCore to boot, it's time to get the rest of it to work. In this repository you'll find a bunch of SSDTs with a plist for patches that comes with SSDTs (if needed). Note that these ACPI files are made with my machine in mind (the CPU, RAM, SSD differences do not matter), and depending on your motherboard revision and your UEFI Firmware version/variation/revision, you may need to change things, but usually you wouldn't need to but just in case, I'll link many resources to get information to fix things on your end.
@@ -261,7 +263,7 @@ After installing macOS, getting OpenCore to boot, it's time to get the rest of i
 
 | SSDT File Name | Patch(es) to use with                                        | Reason to use                                                |
 | -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| SSDT-BAT.aml   | - GBAW to XBAW<br />- GACW to XACW<br />- BTIF to XTIF<br />- BTST to XTST<br />- ITLB to XTLB<br />- GBTI to XBTI<br />- GBTC to XBTC<br />- SBTC to XBXC<br />- GCGC to XCGC<br />- NTBI to XTBI | Battery patches to get battery reading in macOS. The SSDT has the patched OperationRegions + Methods, the OC patches rename the original methods to something else so that macOS uses the new patched methods in the SSDT. |
+| SSDT-BAT   | - GBAW to XBAW<br />- GACW to XACW<br />- BTIF to XTIF<br />- BTST to XTST<br />- ITLB to XTLB<br />- GBTI to XBTI<br />- GBTC to XBTC<br />- SBTC to XBXC<br />- GCGC to XCGC<br />- NTBI to XTBI | Battery patches to get battery reading in macOS. The SSDT has the patched OperationRegions + Methods, the OC patches rename the original methods to something else so that macOS uses the new patched methods in the SSDT. |
 | SSDT-XOSI      | _OSI to XOSI                                               | Renames the _OSI (Operating System Interface Level) method so that we can add macOS identification in the SSDT, this way, features that would only be enabled if Windows was detected would be also available for macOS. In our case it's mostly the I2C controllers. |
 | SSDT-PNLF      | *none*                                                       | Fixes brightness by adding a PNLF device.                    |
 | SSDT-EC        | *none*                                                       | Adds a fake EC device (embedded controller) named `EC__`, this fixes macOS Catalina's boot issue. More about that [here](https://www.reddit.com/r/hackintosh/comments/den28t/whats_new_in_macos_catalina/). |
@@ -346,3 +348,7 @@ You will need to disassemble the tablet, which is kinda hard to do.
 Check this guide: https://www.ifixit.com/Device/HP_Elite_x2_1012_G2 and https://www.ifixit.com/Guide/HP+Elite+x2+1012+G2+Wi-Fi+Card+Replacement/107930
 
 You can skip step 2 (were you unscrew the hinge). Good luck.
+
+---
+
+And with that, Good Luck and let me know if you succeded. Also I would love to get fixes and changes to this guide to improve on it. Open an Issue or make a PR and I'll review it.
