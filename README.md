@@ -368,5 +368,6 @@ And with that, Good Luck and let me know if you succeded. Also I would love to g
 - [osy86](https://github.com/osy86/) for TB3 debugging and tons of informative writing about thunderbolt
 - [DhinakG](https://github.com/dhinakg) for various help
 - [r/hackintosh Discord](http://discord.io/hackintosh) ~~for being a shithole~~ for various helping hands and great community
+- [Tonymacx86 forums](https://tonymacx86.com) for being **assholes** and banning me because I asked for volunteers to help me fix TB3, but fuck them anyways! DONT USE THEIR CRAP TOOLS!
 
 Thank you.
