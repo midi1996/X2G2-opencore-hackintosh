@@ -352,3 +352,21 @@ You can skip step 2 (were you unscrew the hinge). Good luck.
 ---
 
 And with that, Good Luck and let me know if you succeded. Also I would love to get fixes and changes to this guide to improve on it. Open an Issue or make a PR and I'll review it.
+
+## Credits:
+
+- [Apple](https://www.apple.com) for macOS
+- [jhax01/blankmac](https://github.com/blankmac) for the first guide for macOS on this X2 G2 device, for many patches and fixes and also for VoodooI2C additions and AlpsT4USB kext
+- [Rehabman](https://github.com/RehabMan/) for the patches and guides and kexts
+- [Acidanthera](https://github.com/acidanthera) for OpenCore and all the kexts/utilities that they made
+- [Alex James (aka theracermaster)](https://github.com/al3xtjames) for NoTouchID and information
+- [Alexandre Daoud](https://github.com/alexandred/) for VoodooI2C and more
+- [CorpNewt](https://github.com/corpnewt/) for many tools and utilities used through this guide ([ProperTree](https://github.com/corpnewt/ProperTree), [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS), [USBMap](https://github.com/corpnewt/USBMap) and many more) and help to get this going in the first versions of OC
+- [Mykola Grymalyuk aka khronokernel (boomer-chan)](https://github.com/khronokernel) for the OC guide and help
+- [fewtarius](https://github.com/fewtarius) for Clover Laptop Guide and help
+- [ReddestDream](https://github.com/reddestdream) for tons of information
+- [osy86](https://github.com/osy86/) for TB3 debugging and tons of informative writing about thunderbolt
+- [DhinakG](https://github.com/dhinakg) for various help
+- [r/hackintosh Discord](http://discord.io/hackintosh) ~~for being a shithole~~ for various helping hands and great community
+
+Thank you.
