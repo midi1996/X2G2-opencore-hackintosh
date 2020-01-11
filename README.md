@@ -305,14 +305,7 @@ After installing macOS, getting OpenCore to boot, it's time to get the rest of i
 | BrcmFirmwareData | Holds all the configured firmwares for different Broadcom Bluetooth USB devices | BrcmBluetoothInjector | https://github.com/acidanthera/BrcmPatchRAM | https://github.com/acidanthera/BrcmPatchRAM/releases |
 | BrcmPatchRAM3 | A macOS driver which applies PatchRAM updates for Broadcom RAMUSB based devices. (Note that BrcmPatchRAM3 is to be used with 10.15, it works with 10.14 but BrcmPatchRAM2 is recommended for that OS version, OpenCore can inject either of them depending on the OS version, make sure you configure it in the config.plist) | - BrcmBluetoothInjector<br />- BrcmFirmwareData | https://github.com/acidanthera/BrcmPatchRAM | https://github.com/acidanthera/BrcmPatchRAM/releases |
 
-There also some kexts to be blocked just in case:
-
-| OS Kext to block | Reason |
-|---|---|
-| com.apple.driver.AppleIntelLpssI2C | So that it doesn't attach to the I2C device, and let VoodooI2C attach. -- thanks to CoolStar |
-| com.apple.driver.AppleIntelLpssI2CController | So that it doesn't attach to the I2C device, and let VoodooI2C attach. -- thanks to CoolStar |
-
-You should be all done for now. All of these patches/kexts to block will be in `oc-additions.plist`. You will have to merge them in your config.plist that you made earlier with the OpenCore guide.
+You should be all done for now. All of these patches will be in `oc-additions.plist`. You will have to merge them in your config.plist that you made earlier with the OpenCore guide.
 
 ---
 
