@@ -54,14 +54,18 @@ Thankfully with OpenCore a lot of things got smoothed out and works just as you 
   - Microphones
   - Headphone (just audio out, the onboard microphone is used)
   - Speakers
-- Touch
-  - As a giant trackpad
-  - Pen input (no pressure support)
+- Display
+  - Brightness
+  - Touch
+    - As a giant trackpad
+    - Pen input (no pressure support)
 - Keyboard cover USB trackpad (yes it's USB)
 - Keyboard hotkeys
   - Note that you may want to do a fresh Windows re-install to get the brightness keys working on both OSes, HP's keyboard software breaks it.
 - Sleep/Wake/Shutdown/Reboot
 - Startup Disk/Bootcamp reboot
+  - From and to Windows/macOS
+  - Follow OpenCore's documentation for that.
 - FileVault
 - HEVC encoding
 - Apple Services (AppStore, iMessage, FaceTime, iCloud...)
@@ -154,9 +158,12 @@ Before installing macOS, you'll have to prepare your computer.
        - ![IMG_2659](./images/IMG_2659.JPG)
      - Power Management Options
        - ![IMG_8771](./images/IMG_8771.JPG)
+         - **DISABLE MODERN STANDBY! IT'S THE DEVIL ITSELF!**
      - Remote Management Options
        - ![IMG_8222](./images/IMG_8222.JPG)
 5. Press F10 when done to save and reboot. Make sure you can boot into Windows.
+
+---
 
 Ok, so I know that some of you may have a macOS machine nearby and some may not so I got the guide for both. The setup overview will be something like this:
 
@@ -174,7 +181,7 @@ Ok, so I know that some of you may have a macOS machine nearby and some may not 
   - You can use [ProperTree](https://www.github.com/corpnewt/ProperTree) on windows/linux to make OC's config.plist
   - Gathering Files:
     - Firmware Drivers
-      - Use `HfsPlus.efi` instead of `VboxHfs`, it's faster and it's Apple's official driver dumped from real Macs firmware.
+      - Use `HfsPlus` instead of `VboxHfs`, it's faster and it's Apple's official driver dumped from real Macs firmware.
       - Do not use `UsbKbDxe`, our keyboard is PS/2
       - `FwRuntimeServices` may be integrated in the OpenCorePkg zip in future releases.
     - Kexts
@@ -182,7 +189,7 @@ Ok, so I know that some of you may have a macOS machine nearby and some may not 
       - No need for an ethernet kext (as you guessed it, because you don have one, USB ethernet adapters have their own OEM drivers or may work OOB)
       - You need VoodooPS2 (acidanthera) driver found [here](http://kexts.goldfish64.com/) (source code [here](https://github.com/acidanthera/VoodooPS2)), in case it didn't work for you, you can use Rehabman's releases (same repository). This driver will enable your PS/2 keyboard (yes the keyboard is PS/2) to be used by macOS.
     - SSDTs:
-      - Take from this guide these files:
+      - Take from this guide (the one that you're reading atm) these files:
         - SSDT-PLUG
           - Will enable native power management
         - SSDT-EC
@@ -359,25 +366,77 @@ Check this guide: https://www.ifixit.com/Device/HP_Elite_x2_1012_G2 and https://
 
 You can skip step 2 (were you unscrew the hinge). Good luck.
 
+### Touch experience
+
+macOS touch experience is by far the worst! Don't even think about getting iPad/iPhone like experience oob, but thanks to VoodooI2C, the experience has been a lot better. The screen acts now like a giant trackpad, with absolute pointing to get "proper" touch usability. Here are some things to keep in mind:
+
+- You will have to use 2 fingers to scroll, yes it feels weird, but you'll get used to if you're ok with the way things go
+- 5 fingers spread/pinch is quite hard for small handed people, you literally have to stretch every finger all over the screen to get the gesture done
+- Sometimes the pen won't be registered, just touch with your finger once and it should register the pen again
+- OSK (on-screen keyboard) isn't really the best, even with 3rd party tools, however, it's quite convenient and pretty good. The one I use is the built in accessibility keyboard, which dims when not in use and can be shortened to a small floating button on your screen. The key responsiveness is a bit bad (what did you expect?) but still a bit better than KeyUp (a 3rd party OSK) since it's well integrated with the OS.
+  - ![kbd](/Users/midi/Gits/guides/x2guide/images/kbd.png)
+- No, the OSK will not pop out when you reach to a text field.
+- There is an alternative to the VoodooI2C gestures, idk if they still work, it's called Touch-base driver, they give you a trial driver to use with a VoodooI2C add-on (VoodooI2CUPDDEngine). The single touch gestures are still just handled the default way on macOS, so no one finger scrolling, and also no long holding with UPDD, so you'll have to use 2 fingers, unlike VoodooI2C which you can use either.
+  - Also the full price of the driver is like $100 or something or a single OS per computer, so yeah, you get the point.
+
+### HiDPI Resolutions
+
+By default, if you get proper screen resolution after macOS install, the screen res would be at a 200% DPI, which is for our devices 1368x912, looks small on paper but its actual resolution is twice that at 2736x1824 which, you guessed it, our native screen resolution. It makes text sharper, elements of the screen bigger and more comfortable to use, however unlike windows, macOS does not have non-integer scaling, so you will not have a % you can choose from, but you'll have to give macOS a resolution to emulate and then "x2"s it as a Retina resolution.
+
+- So for example, you want to get the "150%" scale on macOS
+- Your "resolution" for that scale is 1536x1024
+  - If you give this resolution to macOS, the whole display will be blurry and mushy because the display will *upscale* it
+  - To get better results visually, you will need to tell macOS that you have double that resolution and then it will "retinize" that resolution
+  - So you must give macOS a resolution of 1536\*2 by 1024\*2 which is **3072** by **2048**. 
+- To do that, you'll either have to follow [this guide](https://www.tonymacx86.com/threads/adding-using-hidpi-custom-resolutions.133254/) or by simply using this [RDM Utility](https://github.com/usr-sse2/RDM/releases)
+  - This utility has the possibility of reading all possible resolutions of your system, and the ones that are marked with a ⚡️ are HiDPI resolutions.
+  - You can even add resolutions (make sure they're twice the "seen" resolution and check "HiDPI")
+  - This needs SIP disabled
+    - ⚠️ Disabling SIP may create security issues on your system as the part of the OS that is critical is now vulnerable to modifications
+    - You can completely disable it by rebooting to the recovery and running `c
+    - You can completely disable it by editing `config.plist`\\`NVRAM`\\`l`\\`csr-active-config`:`E7030000` (in ProperTree or Xcode, if you're doing it with a text editor type `5wMAAA==`) -- not recommended by OC.
+      - Reboot to macOS
+
+### Documentations and guides that you must read/follow in case you need assistance:
+
+- [OpenCore Configuration](https://github.com/acidanthera/OpenCorePkg/raw/master/Docs/Configuration.pdf)
+- [OpenCore Vanilla Guide](https://khronokernel.github.io/Opencore-Vanilla-Desktop-Guide/)
+- Rehabman's:
+  - [ACPI patching guide](https://www.tonymacx86.com/threads/guide-patching-laptop-dsdt-ssdts.152573/)
+  - [ACPI hot patching guide](https://www.tonymacx86.com/threads/guide-using-clover-to-hotpatch-acpi.200137/)
+  - [Laptop Guide](https://www.tonymacx86.com/threads/guide-booting-the-os-x-installer-on-laptops-with-clover.148093/) (it's old now, I recommend fewtarius' guide)
+  - [USB Power Property](https://www.tonymacx86.com/threads/guide-usb-power-property-injection-for-sierra-and-later.222266/)
+  - [Battery patching](https://www.tonymacx86.com/threads/guide-how-to-patch-dsdt-for-working-battery-status.116102/) (to be used with SMCBattery)
+  - [Power Management](https://www.tonymacx86.com/threads/guide-native-power-management-for-laptops.175801/)
+- [Fewtarius' Clover Laptop guide](https://fewtarius.gitbook.io/laptopguide/)
+- Acidanthera's
+  - WhateverGreen [documentation](https://github.com/acidanthera/WhateverGreen/tree/master/Manual)
+  - AppleALC [wiki](https://github.com/acidanthera/AppleALC/wiki)
+- Osy's
+  - [HDA Fix](https://osy.gitbook.io/hac-mini-guide/details/hda-fix)
+  - [Thunderbolt shenanigans](https://osy.gitbook.io/hac-mini-guide/details/thunderbolt-3-fix) (good bed time stories)
+- VoodooI2C's [documentation](https://voodooi2c.github.io/#index)
+
 ---
 
-And with that, Good Luck and let me know if you succeded. Also I would love to get fixes and changes to this guide to improve on it. Open an Issue or make a PR and I'll review it.
+And with that, Good Luck and let me know if you succeeded. Also I would love to get fixes and changes to this guide to improve on it. Open an Issue or make a PR and I'll review it.
 
 ## Credits:
 
 - [Apple](https://www.apple.com) for macOS
-- [jhax01/blankmac](https://github.com/blankmac) for the first guide for macOS on this X2 G2 device, for many patches and fixes and also for VoodooI2C additions and AlpsT4USB kext
-- [Rehabman](https://github.com/RehabMan/) for the patches and guides and kexts
 - [Acidanthera](https://github.com/acidanthera) for OpenCore and all the kexts/utilities that they made
 - [Alex James (aka theracermaster)](https://github.com/al3xtjames) for NoTouchID and information
 - [Alexandre Daoud](https://github.com/alexandred/) for VoodooI2C and more
+- [blankmac/jhax01](https://github.com/blankmac) for the first guide for macOS on this X2 G2 device, for many patches and fixes and also for VoodooI2C additions and AlpsT4USB kext
 - [CorpNewt](https://github.com/corpnewt/) for many tools and utilities used through this guide ([ProperTree](https://github.com/corpnewt/ProperTree), [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS), [USBMap](https://github.com/corpnewt/USBMap) and many more) and help to get this going in the first versions of OC
-- [Mykola Grymalyuk aka khronokernel (boomer-chan)](https://github.com/khronokernel) for the OC guide and help
-- [fewtarius](https://github.com/fewtarius) for Clover Laptop Guide and help
-- [ReddestDream](https://github.com/reddestdream) for tons of information
-- [osy86](https://github.com/osy86/) for TB3 debugging and tons of informative writing about thunderbolt
 - [DhinakG](https://github.com/dhinakg) for various help
+- [fewtarius](https://github.com/fewtarius) for Clover Laptop Guide and help
+- [Mykola Grymalyuk aka khronokernel (boomer-chan)](https://github.com/khronokernel) for the OC guide and help
+- [osy86](https://github.com/osy86/) for TB3 debugging and tons of informative writing about thunderbolt
+- [Rehabman](https://github.com/RehabMan/) for the patches and guides and kexts
+- [ReddestDream](https://github.com/reddestdream) for tons of information
 - [r/hackintosh Discord](http://discord.io/hackintosh) ~~for being a shithole~~ for various helping hands and great community
-- [Tonymacx86 forums](https://tonymacx86.com) for being **assholes** and banning me because I asked for volunteers to help me fix TB3, but fuck them anyways! DONT USE THEIR CRAP TOOLS!
+- [InsanelyMac Forums](https://insanelymac.com/forum) for whatever they have there, I haven't posted in that place in years
+- [Tonymacx86 forums](https://tonymacx86.com) for being **assholes** and banning me because I asked for volunteers to help me fix TB3, but fuck them anyway! DONT USE THEIR CRAP TOOLS!
 
 Thank you.
