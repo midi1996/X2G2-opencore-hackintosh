@@ -12,6 +12,12 @@ THIS GUIDE IS PROVIDED TO YOU FOR EDUCATIONAL PURPOSES. I AND ANYONE MENTIONED D
 
 ---
 
+## Table of Content
+
+[TOC]
+
+---
+
 ## My Hardware
 
 - Model: HP Elite X2 1012 G2
@@ -421,7 +427,7 @@ By default, if you get proper screen resolution after macOS install, the screen 
 
 And with that, Good Luck and let me know if you succeeded. Also I would love to get fixes and changes to this guide to improve on it. Open an Issue or make a PR and I'll review it.
 
-## Credits:
+## Credits
 
 - [Apple](https://www.apple.com) for macOS
 - [Acidanthera](https://github.com/acidanthera) for OpenCore and all the kexts/utilities that they made
