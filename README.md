@@ -14,7 +14,31 @@ THIS GUIDE IS PROVIDED TO YOU FOR EDUCATIONAL PURPOSES. I AND ANYONE MENTIONED D
 
 ## Table of Content
 
-[TOC]
+#### Table of contents
+
+1. [Intro](#intro)
+2. [Disclaimer](#disclaimer)
+3. [Table of Content](#tableofcontent)
+4. [My Hardware](#myhardware)
+    * [What's working](#whatsworking)
+    * [What's not working](#whatsnotworking)
+    * [What's working badly/did not test](#whatsworkingbadlydidnottest)
+    * [Things I'm trying to fix atm and need help with](#thingsimtryingtofixatmandneedhelpwith)
+5. [Installing macOS](#installingmacos)
+    * [Preparing your computer](#preparingyourcomputer)
+    * [[OpenCore Guide - khronokernel aka Hackintosh Slav (boomer-chan)](https://khronokernel.github.io/Opencore-Vanilla-Desktop-Guide)](#opencoreguidekhronokernelakahackintoshslavboomerchanhttpskhronokernelgithubioopencorevanilladesktopguide)
+    * [You're good to go and start your macOS installer](#youregoodtogoandstartyourmacosinstaller)
+    * [Fixing macOS and friends](#fixingmacosandfriends)
+        - [ACPI Fixes](#acpifixes)
+        - [Kernel Extensions (Kexts)](#kernelextensionskexts)
+        - [Audio and DP output](#audioanddpoutput)
+6. [Issues and small fixes and whatever I can't put in a category lol](#issuesandsmallfixesandwhatevericantputinacategorylol)
+    * [Type C](#typec)
+    * [WiFi Card](#wificard)
+    * [Touch experience](#touchexperience)
+    * [HiDPI Resolutions](#hidpiresolutions)
+    * [Documentations and guides that you must read/follow in case you need assistance:](#documentationsandguidesthatyoumustreadfollowincaseyouneedassistance)
+7. [Credits](#credits)
 
 ---
 
@@ -380,7 +404,7 @@ macOS touch experience is by far the worst! Don't even think about getting iPad/
 - 5 fingers spread/pinch is quite hard for small handed people, you literally have to stretch every finger all over the screen to get the gesture done
 - Sometimes the pen won't be registered, just touch with your finger once and it should register the pen again
 - OSK (on-screen keyboard) isn't really the best, even with 3rd party tools, however, it's quite convenient and pretty good. The one I use is the built in accessibility keyboard, which dims when not in use and can be shortened to a small floating button on your screen. The key responsiveness is a bit bad (what did you expect?) but still a bit better than KeyUp (a 3rd party OSK) since it's well integrated with the OS.
-  - ![kbd](/Users/midi/Gits/guides/x2guide/images/kbd.png)
+  - ![kbd](./images/kbd.png)
 - No, the OSK will not pop out when you reach to a text field.
 - There is an alternative to the VoodooI2C gestures, idk if they still work, it's called Touch-base driver, they give you a trial driver to use with a VoodooI2C add-on (VoodooI2CUPDDEngine). The single touch gestures are still just handled the default way on macOS, so no one finger scrolling, and also no long holding with UPDD, so you'll have to use 2 fingers, unlike VoodooI2C which you can use either.
   - Also the full price of the driver is like $100 or something or a single OS per computer, so yeah, you get the point.
