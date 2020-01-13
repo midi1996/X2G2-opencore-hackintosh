@@ -26,7 +26,7 @@ THIS GUIDE IS PROVIDED TO YOU FOR EDUCATIONAL PURPOSES. I AND ANYONE MENTIONED D
     * [Things I'm trying to fix atm and need help with](#thingsimtryingtofixatmandneedhelpwith)
 5. [Installing macOS](#installingmacos)
     * [Preparing your computer](#preparingyourcomputer)
-    * [[OpenCore Guide - khronokernel aka Hackintosh Slav (boomer-chan)](https://khronokernel.github.io/Opencore-Vanilla-Desktop-Guide)](#opencoreguidekhronokernelakahackintoshslavboomerchanhttpskhronokernelgithubioopencorevanilladesktopguide)
+    * [OpenCore Guide - khronokernel aka Hackintosh Slav (boomer-chan)](#opencore-guide---khronokernel-aka-hackintosh-slav-boomer-chan)
     * [You're good to go and start your macOS installer](#youregoodtogoandstartyourmacosinstaller)
     * [Fixing macOS and friends](#fixingmacosandfriends)
         - [ACPI Fixes](#acpifixes)
