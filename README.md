@@ -423,7 +423,7 @@ By default, if you get proper screen resolution after macOS install, the screen 
   - You can even add resolutions (make sure they're twice the "seen" resolution and check "HiDPI")
   - This needs SIP disabled
     - ⚠️ Disabling SIP may create security issues on your system as the part of the OS that is critical is now vulnerable to modifications
-    - You can completely disable it by rebooting to the recovery and running `c
+    - You can completely disable it by rebooting to the recovery and running `csrutil disable`
     - You can completely disable it by editing `config.plist`\\`NVRAM`\\`l`\\`csr-active-config`:`E7030000` (in ProperTree or Xcode, if you're doing it with a text editor type `5wMAAA==`) -- not recommended by OC.
       - Reboot to macOS
 
